@@ -1,3 +1,5 @@
 #!/bin/bash
-javac -d /root/javasocket-BOE/bin /root/javasocket-BOE/src/server/*.java
-nohup java -cp /root/javasocket-BOE/bin/ server/Server &>>/root/logs/socket.log &
+projeckName=$1
+
+javac -d /root/javasocket-BOE/bin /root/$projeckName/src/server/*.java
+nohup java -cp /root/$projeckName/bin/ server/Server &>>/root/logs/socket.log &
