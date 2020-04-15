@@ -29,7 +29,7 @@ public class Server {
 			thread.start();
 
 			InetAddress address = socket.getInetAddress();
-			System.out.println("[Connection] ip:" + address.getHostAddress() + "\time:" + df.format(new Date()));
+			System.out.println("[Connection]\tip:" + address.getHostAddress() + "\ttime:" + df.format(new Date()));
 		}
 
 	}
@@ -66,8 +66,9 @@ class ServerThread extends Thread {
 
 			while (true) {
 				info = br.readLine();
-				System.out.println("[Commend] ip:" + address.getHostAddress() + "\time:" + df.format(new Date())+"\tcommand:"+info);				
+				System.out.println("[Commend]\tip:" + address.getHostAddress() + "\ttime:" + df.format(new Date())+"\tcommand:"+info);				
 				pw.write(sysExec.executeLinuxCmd("ps -aux"));
+				pw.write("\n");
 				pw.write("***---***\n");
 				pw.flush();
 			}
