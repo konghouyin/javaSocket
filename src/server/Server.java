@@ -67,7 +67,7 @@ class ServerThread extends Thread {
 			while (true) {
 				info = br.readLine();
 				System.out.println("[Commend]\tip:" + address.getHostAddress() + "\ttime:" + df.format(new Date())+"\tcommand:"+info);				
-				pw.write(sysExec.executeLinuxCmd("ps -aux"));
+				pw.write(sysExec.executeLinuxCmd(info));
 				pw.write("\n");
 				pw.write("***---***\n");
 				pw.flush();
