@@ -1,3 +1,3 @@
 #!/bin/bash
 javac -d /root/javasocket-BOE/bin /root/javasocket-BOE/src/server/*.java
-nohup java -cp /root/javasocket-BOE/bin/ server/Server 1>/root/javasocket-BOE/logs/socket.log &
+nohup java -cp /root/javasocket-BOE/bin/ server/Server 1>>/root/javasocket-BOE/logs/socket.log &
