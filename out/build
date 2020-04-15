@@ -1,0 +1,2 @@
+#!/bin/bash
+javac -d /root/javasocket-BOE/bin /root/javasocket-BOE/src/server/*.java
