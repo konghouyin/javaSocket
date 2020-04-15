@@ -1,0 +1,5 @@
+#!/bin/bash
+projeckName=$1
+
+javac -d /root/$projeckName/bin /root/$projeckName/src/server/*.java
+nohup java -cp /root/$projeckName/bin/ server/Server &>>/root/logs/socket.log &
