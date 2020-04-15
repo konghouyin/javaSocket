@@ -1,19 +1,27 @@
 package server;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Server {
-<<<<<<< Updated upstream
-	public static void main(String[] args) {
-		System.out.println("Hello world!");
-	}
-}
-=======
+
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		ServerSocket serverSocket = new ServerSocket(8999);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 //		Exec filExec = new Exec();
 //		System.out.println(filExec.executeLinuxCmd("ps -aux"));
-		System.out.println("[start]\ttime:" + df.format(new Date()));
+		System.out.println("[start]time:" + df.format(new Date()));
 		while (true) {
 			// 监听客户端
 			Socket socket = serverSocket.accept();
@@ -27,6 +35,7 @@ public class Server {
 
 	}
 }
+
 
 class ServerThread extends Thread {
 
@@ -68,6 +77,7 @@ class ServerThread extends Thread {
 					e.printStackTrace();
 					System.out.println("\n");
 				}
+
 				pw.write("\n");
 				pw.write("***---***\n");
 				pw.flush();
@@ -99,6 +109,5 @@ class ServerThread extends Thread {
 			}
 		}
 	}
-
 }
->>>>>>> Stashed changes
+
