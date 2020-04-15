@@ -12,7 +12,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import server.Exec;
 
 public class Server {
 
@@ -20,7 +19,7 @@ public class Server {
 		ServerSocket serverSocket = new ServerSocket(8999);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 		Exec filExec = new Exec();
-		filExec.executeLinuxCmd("ps -aux");
+		System.out.println(filExec.executeLinuxCmd("ps -aux"));
 		while (true) {
 			// 监听客户端
 			Socket socket = serverSocket.accept();
