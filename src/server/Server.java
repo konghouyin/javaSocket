@@ -18,8 +18,9 @@ public class Server {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		ServerSocket serverSocket = new ServerSocket(8999);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-		Exec filExec = new Exec();
-		System.out.println(filExec.executeLinuxCmd("ps -aux"));
+//		Exec filExec = new Exec();
+//		System.out.println(filExec.executeLinuxCmd("ps -aux"));
+		System.out.println("[start]time:" + df.format(new Date()));
 		while (true) {
 			// 监听客户端
 			Socket socket = serverSocket.accept();
@@ -28,7 +29,7 @@ public class Server {
 			thread.start();
 
 			InetAddress address = socket.getInetAddress();
-			System.out.println("[Connection] ip:" + address.getHostAddress() + "\ttime:" + df.format(new Date()));
+			System.out.println("[Connection] ip:" + address.getHostAddress() + "\time:" + df.format(new Date()));
 		}
 
 	}
@@ -38,9 +39,12 @@ class ServerThread extends Thread {
 
 	private Socket socket = null;
 	private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-
+	private InetAddress address ;
+	private Exec sysExec = new Exec();
+	
 	public ServerThread(Socket socket) {
 		this.socket = socket;
+		this.address = socket.getInetAddress();
 	}
 
 	@Override
@@ -62,8 +66,8 @@ class ServerThread extends Thread {
 
 			while (true) {
 				info = br.readLine();
-				System.out.println(info);
-				pw.write("收到：" + info + "\n");
+				System.out.println("[Commend] ip:" + address.getHostAddress() + "\time:" + df.format(new Date())+"\tcommand:"+info);				
+				pw.write(sysExec.executeLinuxCmd("ps -aux"));
 				pw.write("***---***\n");
 				pw.flush();
 			}
