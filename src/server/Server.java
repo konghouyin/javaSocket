@@ -70,7 +70,9 @@ class ServerThread extends Thread {
 				try {
 					pw.write(sysExec.executeLinuxCmd(info));
 				}catch (Exception e) {
+					System.out.println("[Eror-Command]\tcommand:"+info+"\ttime:" + df.format(new Date()));
 					pw.write("command:"+info+"有误");
+					e.printStackTrace();
 				}
 				
 				pw.write("\n");
